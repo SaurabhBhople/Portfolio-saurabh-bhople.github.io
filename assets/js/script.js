@@ -40,3 +40,15 @@ window.addEventListener("scroll", function(){
     header.classList.remove("active");
   }
 });
+
+// contact us data link
+const scriptURL = 'https://script.google.com/macros/s/AKfycbwJNLMLBaiVUnRzESupxoIVXyoPwxZDqxUnp-74KoeY7YduM9tOPqtn5INu9-0CeYJq/exec'
+const form = document.forms['Contactform']
+
+form.addEventListener('submit', e => {
+  e.preventDefault()
+  fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+  .then(response => alert("Thank you! I will contact you soon" ))
+  .then(() => {  window.location.reload(); })
+  .catch(error => console.error('Error!', error.message))
+})
